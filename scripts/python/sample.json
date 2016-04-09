@@ -1,0 +1,79 @@
+{
+    "html_description":"\n<img src=\"http://l.yimg.com/a/i/us/we/52/33.gif\"/><br />\n<b>Current Conditions:</b><br />\nFair, 18 C<BR />\n<BR /><b>Forecast:</b><BR />\nSat - Partly Cloudy. High: 22 Low: 12<br />\nSun - Partly Cloudy. High: 22 Low: 10<br />\nMon - Partly Cloudy. High: 14 Low: 6<br />\nTue - Mostly Sunny. High: 15 Low: 11<br />\nWed - Cloudy/Wind. High: 18 Low: 14<br />\n<br />\n<a href=\"http://us.rd.yahoo.com/dailynews/rss/weather/Tokyo__JA/*http://weather.yahoo.com/forecast/JAXX0085_c.html\">Full Forecast at Yahoo! Weather</a><BR/><BR/>\n(provided by <a href=\"http://www.weather.com\" >The Weather Channel</a>)<br/>\n",
+    "atmosphere":{
+        "pressure":"982.05",
+        "rising":"0",
+        "visibility":"9.99",
+        "humidity":"59"
+    },
+    "title":"Yahoo! Weather - Tokyo, JA",
+    "condition":{
+        "date":"Sat, 09 Apr 2016 9:29 pm JST",
+        "text":"Fair",
+        "code":"33",
+        "temp":"18",
+        "title":"Conditions for Tokyo, JA at 9:29 pm JST"
+    },
+    "forecasts":[
+        {
+            "date":"9 Apr 2016",
+            "high":"22",
+            "code":"29",
+            "low":"12",
+            "text":"Partly Cloudy"
+        },
+        {
+            "date":"10 Apr 2016",
+            "high":"22",
+            "code":"30",
+            "low":"10",
+            "text":"Partly Cloudy"
+        },
+        {
+            "date":"11 Apr 2016",
+            "high":"14",
+            "code":"30",
+            "low":"6",
+            "text":"Partly Cloudy"
+        },
+        {
+            "date":"12 Apr 2016",
+            "high":"15",
+            "code":"34",
+            "low":"11",
+            "text":"Mostly Sunny"
+        },
+        {
+            "date":"13 Apr 2016",
+            "high":"18",
+            "code":"24",
+            "low":"14",
+            "text":"Cloudy/Wind"
+        }
+    ],
+    "link":"http://us.rd.yahoo.com/dailynews/rss/weather/Tokyo__JA/*http://weather.yahoo.com/forecast/JAXX0085_c.html",
+    "location":{
+        "city":"Tokyo",
+        "region":"",
+        "country":"JA"
+    },
+    "units":{
+        "distance":"km",
+        "speed":"km/h",
+        "temperature":"C",
+        "pressure":"mb"
+    },
+    "astronomy":{
+        "sunset":"6:09 pm",
+        "sunrise":"5:16 am"
+    },
+    "geo":{
+        "lat":"35.55",
+        "long":"139.77"
+    },
+    "wind":{
+        "direction":"200",
+        "speed":"20.92",
+        "chill":"18"
+    }
+}

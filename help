@@ -1,0 +1,16 @@
+1. Weather Forecast
+   Usage : banabo weather [date(0 - 4)]
+       - 今日 ~ 4日後までの東京、マニラの天気を表示
+       - 引数指定しない場合は今日の天気
+
+2. Sawa-chan
+   Usage : "さわちゃん|さーわちゃん"を含むことば
+       - さわちゃんが元気づけてくれる
+
+3. Kotaro
+   Usage : banabo kotaro
+       - だめになりそうなときにで田村耕太郎兄貴が激励してくれる。たまに叩きのめされる。
+
+4. dig
+   Usage : banabo dig domain [Record Type (a,mx,ns,txt,ptr)
+       - dig、なんだかんだ使う。デフォルトはAレコ。
