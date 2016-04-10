@@ -64,3 +64,14 @@ module.exports = (robot) ->
             msg.send error if error?
             msg.send stdout if stdout?
             msg.send stderr if stderr?
+
+    # Memo
+    robot.respond /news/i, (msg) ->
+        user_name = msg.message.user.name
+        option = "#{msg.match[1]}"
+        command = "python #{python_dir}/news.py #{user_name} #{option}"
+        @exec = require('child_process').exec
+        @exec command, (error, stdout, stderr) ->
+            msg.send error if error?
+            msg.send stdout if stdout?
+            msg.send stderr if stderr?
