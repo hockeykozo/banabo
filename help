@@ -21,3 +21,7 @@
        - add comment : コメントを追加
        - del index* (複数指定可能) : showで表示されたindexをスペース区切りで指定して削除
        - revert : 1作業前に戻す
+       
+6. news 
+   Usage : banabo news
+       - Yahooのトップニュースを表示
