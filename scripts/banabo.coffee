@@ -1,9 +1,28 @@
+# Const
 base_dir = "/home/takashi/dev/banabo"
 tool_dir = "#{base_dir}/scripts"
 python_dir = "#{tool_dir}/python"
 sh_dir = "#{tool_dir}/sh"
 
+## Var 
+cron = require('cron').CronJob
+
+# Functions
 module.exports = (robot) ->
+#    new cron '0 0 20 * * *', () =>
+#        command_weather = "python #{python_dir}/weather.py 0"
+#        command_news = "python #{python_dir}/news.py"
+#        @exec = require('child_process').exec
+#        @exec command_weather, (error, stdout, stderr) ->
+#            msg.send error if error?
+#            msg.send stdout if stdout?
+#            msg.send stderr if stderr?
+#        @exec command_news, (error, stdout, stderr) ->
+#            msg.send error if error?
+#            msg.send stdout if stdout?
+#            msg.send stderr if stderr?
+#
+
     # Banabo Help
     robot.respond /help/i, (msg) ->
         @exec = require('child_process').exec
@@ -65,11 +84,32 @@ module.exports = (robot) ->
             msg.send stdout if stdout?
             msg.send stderr if stderr?
 
-    # Memo
+    # News 
     robot.respond /news/i, (msg) ->
-        user_name = msg.message.user.name
-        option = "#{msg.match[1]}"
         command = "python #{python_dir}/news.py #{user_name} #{option}"
+        @exec = require('child_process').exec
+        @exec command, (error, stdout, stderr) ->
+            msg.send error if error?
+            msg.send stdout if stdout?
+            msg.send stderr if stderr?
+
+    # Multi task
+    robot.respond /multi/i, (msg) ->
+        command_weather = "python #{python_dir}/weather.py 0"
+        command_news = "python #{python_dir}/news.py"
+        @exec = require('child_process').exec
+        @exec command_weather, (error, stdout, stderr) ->
+            msg.send error if error?
+            msg.send stdout if stdout?
+            msg.send stderr if stderr?
+        @exec command_news, (error, stdout, stderr) ->
+            msg.send error if error?
+            msg.send stdout if stdout?
+            msg.send stderr if stderr?
+
+    # Gi-taka
+    robot.hear /たかぎ|ぎーたか/i, (msg) ->
+        command = "python #{python_dir}/random_comments.py たかぎ"
         @exec = require('child_process').exec
         @exec command, (error, stdout, stderr) ->
             msg.send error if error?
