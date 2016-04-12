@@ -5,7 +5,7 @@ python_dir = "#{tool_dir}/python"
 sh_dir = "#{tool_dir}/sh"
 
 ## Var 
-cron = require('cron').CronJob
+#cron = require('cron').CronJob
 
 # Functions
 module.exports = (robot) ->
@@ -86,7 +86,7 @@ module.exports = (robot) ->
 
     # News 
     robot.respond /news/i, (msg) ->
-        command = "python #{python_dir}/news.py #{user_name} #{option}"
+        command = "python #{python_dir}/news.py"
         @exec = require('child_process').exec
         @exec command, (error, stdout, stderr) ->
             msg.send error if error?
@@ -109,7 +109,7 @@ module.exports = (robot) ->
 
     # Gi-taka
     robot.hear /たかぎ|ぎーたか/i, (msg) ->
-        command = "python #{python_dir}/random_comments.py たかぎ"
+        command = "python #{python_dir}/random_comments.py takagi"
         @exec = require('child_process').exec
         @exec command, (error, stdout, stderr) ->
             msg.send error if error?
