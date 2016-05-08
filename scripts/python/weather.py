@@ -1,22 +1,45 @@
 # -*- coding:utf-8 -*-
 import sys
-import pywapi
 import json
+import urllib2 as request
 
 ### Const
 
 ### Sub Function
 def get_weather(locale):
-    weather = pywapi.get_weather_from_yahoo(locale)
-    return weather
+  #  try :
+    
+    if locale == "tokyo":
+        api_req = 'https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20weather.forecast%20where%20woeid%20in%20(select%20woeid%20from%20geo.places(1)%20where%20text%3D%22tokyo%2C%20jp%22)&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys'
+    elif locale == "manila":
+        api_req = 'https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20weather.forecast%20where%20woeid%20in%20(select%20woeid%20from%20geo.places(1)%20where%20text%3D%22manila%2C%20ph%22)&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys'
+    response = request.urlopen(api_req)
+    weather_uni = response.read()
+    response.close()
+    weather = json.loads(weather_uni)
+  #  weather = pywapi.get_weather_from_yahoo(locale)
+  #  weather = pywapi.get_weather_from_google(locale)
+  #  weather = pywapi.get_weather_from_noaa('KJFK')
+  #  except:
+  #      print "Failed to get Web API response"
+  #      quit()
+    return weather["query"]["results"]["channel"]
+    
+def cal_temp(temp_f):
+    temp = 5 * (temp_f - 32) / 9
+    return temp
 
 def print_weather(weather,num):
     if 0 <= num and num <= 4:
-        high = weather['forecasts'][num]['high']
-        low = weather['forecasts'][num]['low']
-        txt = weather['forecasts'][num]['text']
+        high_f = weather['item']['forecast'][num]['high']
+        low_f = weather['item']['forecast'][num]['low']
+        txt = weather['item']['forecast'][num]['text']
         city = weather['location']['city']
-        print "%s : \"%s\" 最高気温 %s℃ 最低気温 %s℃" % (city.encode('utf-8'), txt.encode('utf-8'), high.encode('utf-8'), low.encode('utf-8'))
+        
+        high = cal_temp(int(high_f))
+        low = cal_temp(int(low_f))
+
+        print "%s : \"%s\" 最高気温 %d℃ 最低気温 %d℃" % (city.encode('utf-8'), txt.encode('utf-8'), high, low)
 
 
 def set_date(num):
@@ -41,6 +64,7 @@ def print_date(num):
     date = set_date(num)
     print "===== %sの天気 =====" % date
 
+
 if __name__ == '__main__':
     argv = sys.argv
     if len(argv) > 2:
@@ -56,13 +80,13 @@ if __name__ == '__main__':
     tokyo_locale="JAXX0085"
 
     # Get webinfo
-    tokyo_weather = get_weather(tokyo_locale)
-    manila_weather = get_weather(manila_locale)
+    tokyo_weather = get_weather("tokyo")
+    manila_weather = get_weather("manila")
     
     # print date
     print_date(num)
     # print weather
-    print_weather(manila_weather,num)
     print_weather(tokyo_weather,num)
+    print_weather(manila_weather,num)
 
 #    print json.dumps(tokyo_weather, separators=(',',':'), indent=4)
