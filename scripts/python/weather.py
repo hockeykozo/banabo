@@ -86,7 +86,7 @@ if __name__ == '__main__':
     # print date
     print_date(num)
     # print weather
-    print_weather(tokyo_weather,num)
     print_weather(manila_weather,num)
+    print_weather(tokyo_weather,num)
 
 #    print json.dumps(tokyo_weather, separators=(',',':'), indent=4)
